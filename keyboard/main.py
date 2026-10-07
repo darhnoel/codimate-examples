@@ -77,23 +77,27 @@ def typing(state, emit):
 
 
 def icon(scene, key, x, y):
-    """The keys that carry a picture instead of a word, drawn from lines and circles."""
-    line = dict(w=4)
+    """The keys that carry a picture instead of a word, drawn from lines and circles.
+    On a layer above the key's plate, or they are drawn and never seen."""
+
+    def line(name, a, b, w=4):
+        scene.line(("icon", key, name), start=a, end=b, w=w).fill(INK).on(layer=2)
+
     if key == "globe":
-        scene.circle(("icon", "globe"), r=20, at=(x, y)).fill(
+        scene.circle(("icon", key, "ball"), r=20, at=(x, y)).fill(
             "none", edge=INK, edge_w=3
-        )
-        scene.arc(("icon", "globe", "m"), r=(9, 20), sweep=(0, 360), at=(x, y)).fill(
+        ).on(layer=2)
+        scene.arc(("icon", key, "meridian"), r=(9, 20), sweep=(0, 360), at=(x, y)).fill(
             "none", edge=INK, edge_w=2
-        )
-        scene.line(
-            ("icon", "globe", "eq"), start=(x - 20, y), end=(x + 20, y), **line
-        ).fill(INK)
+        ).on(layer=2)
+        line("equator", (x - 20, y), (x + 20, y), 3)
     elif key == "sparkle":
-        scene.polygon(("icon", "sparkle"), cm.star(4, r=22, at=(x, y))).fill(INK)
+        scene.polygon(("icon", key, "star"), cm.star(4, r=22, at=(x, y))).fill(INK).on(
+            layer=2
+        )
     elif key == "DEL":
         scene.polygon(
-            ("icon", "del"),
+            ("icon", key, "tag"),
             [
                 (x - 30, y),
                 (x - 12, y - 18),
@@ -101,25 +105,15 @@ def icon(scene, key, x, y):
                 (x + 28, y + 18),
                 (x - 12, y + 18),
             ],
-        ).fill("none", edge=INK, edge_w=3)
-        for name, a, b in (("a", (-6, -8), (14, 8)), ("b", (-6, 8), (14, -8))):
-            scene.line(
-                ("icon", "del", name),
-                start=(x + a[0], y + a[1]),
-                end=(x + b[0], y + b[1]),
-                w=3,
-            ).fill(INK)
+        ).fill("none", edge=INK, edge_w=3).on(layer=2)
+        line("cross-a", (x - 6, y - 8), (x + 14, y + 8), 3)
+        line("cross-b", (x - 6, y + 8), (x + 14, y - 8), 3)
     elif key == "return":
-        scene.line(
-            ("icon", "ret", "a"), start=(x + 22, y - 16), end=(x + 22, y + 6), w=4
-        ).fill(INK)
-        scene.line(
-            ("icon", "ret", "b"), start=(x + 22, y + 6), end=(x - 20, y + 6), w=4
-        ).fill(INK)
+        line("down", (x + 22, y - 16), (x + 22, y + 6))
+        line("back", (x + 22, y + 6), (x - 20, y + 6))
         scene.polygon(
-            ("icon", "ret", "head"),
-            [(x - 28, y + 6), (x - 12, y - 8), (x - 12, y + 20)],
-        ).fill(INK)
+            ("icon", key, "head"), [(x - 28, y + 6), (x - 12, y - 8), (x - 12, y + 20)]
+        ).fill(INK).on(layer=2)
 
 
 def draw_key(scene, label, down):
