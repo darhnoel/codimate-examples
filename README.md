@@ -179,6 +179,24 @@ places a file without being able to compute one, so a sliding threshold is a
 sequence of PNGs written before the render. The README is mostly about the
 three places where a jump in the threshold drew a chord instead of a path.
 
+## An interface, not a diagram
+
+**[`keyboard/`](keyboard/)** — a phone keyboard, typed on.
+
+Keys never move, so each is named after its place and a press is a colour change; the
+glow behind it is three faint plates whose opacity the Engine tweens; the typed letters
+are named by position, so a new one fades in and a deleted one fades out. It also draws
+every icon from lines, since there is no emoji font.
+
+## An interface, not a diagram
+
+**[`keyboard/`](keyboard/)** — a phone keyboard, typed on.
+
+Keys never move, so each is named after its place and a press is a colour change; the
+glow behind it is three faint plates whose opacity the Engine tweens; the typed letters
+are named by position, so a new one fades in and a deleted one fades out. It also draws
+every icon from lines, since there is no emoji font.
+
 ## If you are coming from Manim
 
 **[`manim/`](manim/)** — five of Manim's tutorial scenes, translated.
