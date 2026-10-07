@@ -2,7 +2,7 @@
 and write them to lines.py, the way archimedes/segment.py does for its own
 words. The film imports the result and needs no segmenter.
 
-    .venv/bin/python python/examples/cavendish/segment_lines.py
+    .venv/bin/python cavendish/segment_lines.py
 """
 
 import re

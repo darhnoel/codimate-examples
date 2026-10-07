@@ -1,7 +1,7 @@
 # Galton board — where the bell curve comes from
 
 ```bash
-.venv/bin/python python/examples/galton_board/main.py
+.venv/bin/python galton_board/main.py
 ```
 
 Three hundred balls are dropped through a triangle of pegs. At each peg a ball

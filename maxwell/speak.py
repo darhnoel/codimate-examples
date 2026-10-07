@@ -2,8 +2,8 @@
 """Speak this film's captions with Kiri TTS, then hear where each word falls.
 Authoring-time only.
 
-    python python/examples/maxwell/speak.py            # what would be done
-    python python/examples/maxwell/speak.py --write    # record and hear what is missing
+    python maxwell/speak.py            # what would be done
+    python maxwell/speak.py --write    # record and hear what is missing
 
 Two jobs, one per API call, both cached so an unchanged line is never paid for
 twice:

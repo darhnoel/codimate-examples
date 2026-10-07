@@ -1,6 +1,6 @@
 """A Galton board — where the bell curve comes from.
 
-    python python/examples/galton_board/main.py
+    python galton_board/main.py
 
 Balls are dropped through a triangle of pegs. At each peg a ball goes left or
 right, each with even chance, and lands in the bin counting how many times it

@@ -1,7 +1,7 @@
 # Curved Space — a lattice deformed by a mass inside it
 
 ```bash
-.venv/bin/python python/examples/spacetime/main.py
+.venv/bin/python spacetime/main.py
 ```
 
 A wireframe cube of 343 nodes and 882 edges, with every point moved to where it

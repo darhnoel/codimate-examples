@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Speak this film's Khmer captions with Kiri TTS. Authoring-time only.
 
-    python python/examples/year/speak.py            # what would be said
-    python python/examples/year/speak.py --write    # record what is missing
+    python year/speak.py            # what would be said
+    python year/speak.py --write    # record what is missing
 
 The same job as `archimedes/narrate.py`, whose request, cache key and key
 lookup it borrows: the token is `KIRI_API_KEY` in the environment or in the

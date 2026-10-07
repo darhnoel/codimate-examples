@@ -1,0 +1,10 @@
+line-length = 88
+
+[lint]
+# PEP 8 and pyflakes, plus the rule this project learned the hard way:
+#   PLR0913: more than five arguments. A shape used to take eighteen.
+select = ["E", "W", "F", "PLR0913"]
+ignore = ["E741"]
+
+[lint.pylint]
+max-args = 5

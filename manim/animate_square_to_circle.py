@@ -1,6 +1,6 @@
 """Manim's `AnimatedSquareToCircle`, written in Codimate.
 
-    python python/examples/manim/animate_square_to_circle.py
+    python manim/animate_square_to_circle.py
 
 Manim's version leans on `.animate`, which turns any method call into an
 animation:

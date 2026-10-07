@@ -10,8 +10,8 @@
 8. What ε₀ and μ₀ are — charges pushing, wires pulling
 9. The speed — the number that matched light
 
-    .venv/bin/python python/examples/maxwell/main.py
-    .venv/bin/python python/examples/maxwell/main.py --silent
+    .venv/bin/python maxwell/main.py
+    .venv/bin/python maxwell/main.py --silent
 
 Where things are:
 

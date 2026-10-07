@@ -1,12 +1,12 @@
 """Every scene in this folder, in the order Manim's tutorial introduces them.
 
-    python python/examples/manim/main.py
+    python manim/main.py
 
 Each scene is its own runnable file — this only exists because the rest of the
 repository is one explanation per folder with one `main.py`, and a set of
 translations is not that. Run a single one directly when you are reading it:
 
-    python python/examples/manim/different_rotations.py
+    python manim/different_rotations.py
 """
 
 import runpy

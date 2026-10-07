@@ -2,8 +2,8 @@
 """Speak this film's captions with Kiri TTS, then hear where each word falls.
 Authoring-time only.
 
-    python python/examples/cavendish/speak.py            # what would be done
-    python python/examples/cavendish/speak.py --write    # record and hear them
+    python cavendish/speak.py            # what would be done
+    python cavendish/speak.py --write    # record and hear them
 
 Two jobs, one per API call, both cached so an unchanged line is never paid for
 twice:

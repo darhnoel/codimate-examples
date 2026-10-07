@@ -1,7 +1,7 @@
 # maxwell — how did Maxwell find his equations?
 
 ```bash
-.venv/bin/python python/examples/maxwell/main.py    # results/maxwell.mp4
+.venv/bin/python maxwell/main.py    # results/maxwell.mp4
 ```
 
 About ninety seconds, in Khmer captions, on one question: nobody invents four
@@ -71,8 +71,8 @@ to Kiri TTS (voice Oudom, as in `archimedes` and `year`), then sends each clip
 back through the transcriber to learn when every word is said:
 
 ```bash
-.venv/bin/python python/examples/maxwell/speak.py           # what would be done
-.venv/bin/python python/examples/maxwell/speak.py --write   # record and hear (spends credits)
+.venv/bin/python maxwell/speak.py           # what would be done
+.venv/bin/python maxwell/speak.py --write   # record and hear (spends credits)
 ```
 
 The mark on the caption then steps on the word being spoken, and each recording

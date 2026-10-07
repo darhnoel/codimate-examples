@@ -1,6 +1,6 @@
 """Bernoulli's principle, and the story that usually goes with it.
 
-    python python/examples/bernoulli_lift/main.py
+    python bernoulli_lift/main.py
 
 The air over the top of a wing really is faster, and faster really does mean
 lower pressure. That much of the familiar diagram is right.

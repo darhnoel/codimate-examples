@@ -1,7 +1,7 @@
 # cavendish — how do you weigh the Earth?
 
 ```bash
-.venv/bin/python python/examples/cavendish/main.py    # results/cavendish.mp4
+.venv/bin/python cavendish/main.py    # results/cavendish.mp4
 ```
 
 Two minutes, in Khmer captions, on one question: we can weigh a rock and a person,
@@ -46,8 +46,8 @@ The captions can be spoken. `speak.py` sends each one to Kiri TTS (voice Oudom) 
 then sends the clip back through the transcriber to learn when every word is said:
 
 ```bash
-.venv/bin/python python/examples/cavendish/speak.py           # what would be done
-.venv/bin/python python/examples/cavendish/speak.py --write   # record and hear (spends credits)
+.venv/bin/python cavendish/speak.py           # what would be done
+.venv/bin/python cavendish/speak.py --write   # record and hear (spends credits)
 ```
 
 The mark on the caption then steps on the word being spoken, each recording starts on

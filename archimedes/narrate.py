@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Speak this example's Khmer captions with Kiri TTS. Authoring-time only.
 
-    python python/examples/archimedes/narrate.py            # what would be said
+    python archimedes/narrate.py            # what would be said
     KIRI_API_KEY=... python .../narrate.py --write          # actually record
 
 One mp3 per caption, in `audio/`, named by a hash of the text, voice and
@@ -123,7 +123,7 @@ def api_key() -> str:
     token = os.environ.get("KIRI_API_KEY")
     if token:
         return token
-    env = HERE.parents[2] / ".env"
+    env = HERE.parent / ".env"
     if env.exists():
         for line in env.read_text().splitlines():
             name, _, value = line.partition("=")

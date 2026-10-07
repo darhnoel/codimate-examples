@@ -1,20 +1,45 @@
-# Examples
+# Codimate examples
 
-One folder per example, one `main.py` inside it, and a README saying what that
-example teaches.
+Worked examples for [Codimate](https://github.com/darhnoel/codimate): explainer videos
+made from Python. One folder per example, one `main.py` inside it, and a README saying
+what that example teaches. The library, its guide and its reference are in the
+[main repository](https://github.com/darhnoel/codimate), and
+[the site](https://darhnoel.github.io/codimate/).
 
-Small examples are a single `main.py`. Bigger ones split — see
-[When to split](#when-to-split) below for the rule, which is not the one you
-might expect.
+Small examples are a single `main.py`. Bigger ones split. See
+[When to split](#when-to-split) below for the rule, which is not the one you might
+expect.
 
-Run any of them from the repository root:
+## Set up
 
 ```bash
-.venv/bin/python python/examples/bubble_sort/main.py
+git clone https://github.com/darhnoel/codimate-examples && cd codimate-examples
+python3 -m venv .venv
+.venv/bin/pip install -r requirements.txt     # builds Codimate's Rust engine: needs Rust
+brew install ffmpeg typst                     # ffmpeg encodes; typst typesets formulas
+.venv/bin/python bubble_sort/main.py          # writes results/bubble_sort.mp4
 ```
 
-Each writes 1080p60 into [`results/`](../../results/), which is not committed.
-Resolution is a render argument (`scale=1.5`), not something the views know about.
+Run any example from the repository root. Each writes its video into `results/`, which
+is not committed. Resolution is a render argument (`scale=1.5`), not something the views
+know about. `requirements.txt` installs Codimate from its `main` branch until the next
+release; some examples use the science kit and the Previewer, which the last PyPI
+release (0.1.5) does not have.
+
+Several examples have a Khmer narration. That needs a [Kiri TTS](https://www.kiritts.com)
+key in `.env` (`KIRI_API_KEY=...`, never committed) and spends credits; without the audio
+they render silent, and `--silent` forces that.
+
+## Checks
+
+```bash
+.venv/bin/python tests/run.py             # builds every film, typesets every formula: no video
+.venv/bin/python tests/run.py --render    # also renders every example (needs ffmpeg)
+.venv/bin/python tests/run.py --render year maxwell    # or only those
+```
+
+Examples are found, not listed: a new folder with a `main.py` is covered the day it is
+added. `ruff check` must pass too, including no function with more than five arguments.
 
 ## Start here
 
@@ -104,11 +129,19 @@ to freeze the order, which is free when nothing is filled.
 **[`orbits/`](orbits/)** — the Sun, the Earth and the Moon, and a camera pulling
 back from one to all three.
 
-Built from [`codimate.science`](../../docs/reference.md#the-science-kit) alone:
+Built from [`codimate.science`](https://github.com/darhnoel/codimate/blob/main/docs/reference.md#the-science-kit) alone:
 a camera, spheres, orbits, labels that stay clear of each other. It is here for what the kit made
 easy and for what it did not: one moment per frame or the draw order tears, names
 that follow bodies collide unless something moves them, and a pull-back is `dolly`,
 not `moved`.
+
+**[`maxwell/`](maxwell/)** — how did Maxwell find his equations? Nine scenes in Khmer,
+from a compass and a wire to the number that matched light.
+
+Every equation is LaTeX, written on the moment its discovery happens, and Maxwell's own
+term is a separate formula so it can arrive alone. It is here for the narration: each
+word is lined up with the voice by transcribing the recording, and for how a long film
+splits into one module per scene.
 
 **[`cavendish/`](cavendish/)** — how do you weigh the Earth? Two minutes of Khmer
 captions, a torsion balance, and a zoom out through four scales to say how small the
@@ -174,7 +207,7 @@ cm.explain(trace=..., view=..., motion=..., timing=...)
 That call shows how the pieces *connect*, which a directory listing cannot.
 Splitting there gives you five files of a dozen lines each and five import
 blocks, which is the ceremony the Python surface exists to remove
-([ADR 0008](../../docs/adr/0008-python-authoring-surface.md)).
+([ADR 0008](https://github.com/darhnoel/codimate/blob/main/docs/adr/0008-python-authoring-surface.md)).
 
 **A seam is worth having when the file on one side of it does not need
 Codimate.** That is the test, and it is easy to apply:
@@ -204,12 +237,12 @@ that could be checked without rendering anything. `bubble_sort` (57 lines) and
 ## Adding one
 
 ```text
-python/examples/your_example/
+your_example/
     main.py       the whole explanation
     README.md     what it teaches, and what to try changing
 ```
 
 Start with one file. Split a part out only when you could test it on its own.
 
-See [Writing Your First Animation](../../docs/tutorial.md) for the walkthrough
-and [How Codimate Thinks](../../docs/concepts.md) for why it is shaped this way.
+See [Writing Your First Animation](https://github.com/darhnoel/codimate/blob/main/docs/tutorial.md) for the walkthrough
+and [How Codimate Thinks](https://github.com/darhnoel/codimate/blob/main/docs/concepts.md) for why it is shaped this way.

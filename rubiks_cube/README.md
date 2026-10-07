@@ -1,7 +1,7 @@
 # Rubik's cube — a drawing that turned out to be the cube
 
 ```bash
-.venv/bin/python python/examples/rubiks_cube/main.py
+.venv/bin/python rubiks_cube/main.py
 ```
 
 A scrambled cube puts itself back, seven moves, and beside it the same cube

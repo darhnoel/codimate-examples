@@ -6,7 +6,7 @@
 4. Turn the invisible into motion — Michell's torsion balance
 5. From a tiny twist to the planet — and a zoom out to say how small it was
 
-    .venv/bin/python python/examples/cavendish/main.py
+    .venv/bin/python cavendish/main.py
 
 The narration is Khmer captions on a plate, a bright mark stepping word by word,
 at reading pace (`lines.py`, made by `segment_lines.py`). Drawn by hand rather

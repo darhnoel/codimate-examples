@@ -1,7 +1,7 @@
 # Dharmachakra — rotation without a rotate
 
 ```bash
-.venv/bin/python python/examples/dharma_wheel/main.py
+.venv/bin/python dharma_wheel/main.py
 ```
 
 The wheel of the Noble Eightfold Path (អរិយអដ្ឋង្គិកមគ្គ), turning evenly. The

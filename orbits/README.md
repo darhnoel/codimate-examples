@@ -1,12 +1,12 @@
 # Orbits — the science kit, end to end
 
 ```bash
-.venv/bin/python python/examples/orbits/main.py
+.venv/bin/python orbits/main.py
 ```
 
 Close on the Earth and its Moon, then the camera backs away and pans to the Sun
 until a whole year is one ellipse. Thirteen seconds, and every picture is built
-from [`codimate.science`](../../../docs/reference.md#the-science-kit): a `Camera`,
+from [`codimate.science`](https://github.com/darhnoel/codimate/blob/main/docs/reference.md#the-science-kit): a `Camera`,
 three `Sphere`s, two `Orbit`s, a `World` that draws them together, `RingArrows` so
 a turning ball can be seen to turn, and `tag`s kept clear of one another.
 

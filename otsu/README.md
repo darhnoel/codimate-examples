@@ -1,7 +1,7 @@
 # Otsu's Method — a threshold chosen by the histogram
 
 ```bash
-.venv/bin/python python/examples/otsu/main.py
+.venv/bin/python otsu/main.py
 ```
 
 Needs `scikit-image` and `Pillow`, which is also how the arithmetic is checked:

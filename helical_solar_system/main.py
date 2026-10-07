@@ -1,6 +1,6 @@
 """The helical model — our solar system as it moves through the galaxy.
 
-    python python/examples/helical_solar_system/main.py
+    python helical_solar_system/main.py
 
 The Sun is not still. It carries the whole system through the galaxy at about
 230 km/s, so relative to anything outside, a planet does not trace an ellipse —

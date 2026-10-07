@@ -1,6 +1,6 @@
 """Manim's `TwoTransforms`, written in Codimate.
 
-    python python/examples/manim/two_transforms.py
+    python manim/two_transforms.py
 
 Manim has two calls that look the same on screen:
 

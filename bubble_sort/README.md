@@ -1,7 +1,7 @@
 # Bubble sort — things that move
 
 ```bash
-.venv/bin/python python/examples/bubble_sort/main.py
+.venv/bin/python bubble_sort/main.py
 ```
 
 Four bars. The pair being compared turns orange; when they swap, they arc over

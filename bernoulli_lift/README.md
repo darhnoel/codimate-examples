@@ -1,7 +1,7 @@
 # Bernoulli's principle — and the story that goes with it
 
 ```bash
-.venv/bin/python python/examples/bernoulli_lift/main.py
+.venv/bin/python bernoulli_lift/main.py
 ```
 
 Air flows past a wing. Parcels are coloured by speed, and two marked ones are

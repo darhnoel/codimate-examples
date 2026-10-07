@@ -1,6 +1,6 @@
 """The Dharmachakra turning — the wheel of the Noble Eightfold Path.
 
-    python python/examples/dharma_wheel/main.py
+    python dharma_wheel/main.py
 
 Eight spokes, one for each factor of the path. The wheel turns evenly, and the
 factor belonging to the spoke at the top is named below, in Khmer. The spokes

@@ -1,9 +1,9 @@
 # Archimedes' Principle — one box, four materials
 
 ```bash
-.venv/bin/python python/examples/archimedes/main.py             # archimedes.mp4
-.venv/bin/python python/examples/archimedes/main.py km          # archimedes-km.mp4
-.venv/bin/python python/examples/archimedes/main.py km --clean  # ...-km-clean.mp4
+.venv/bin/python archimedes/main.py             # archimedes.mp4
+.venv/bin/python archimedes/main.py km          # archimedes-km.mp4
+.venv/bin/python archimedes/main.py km --clean  # ...-km-clean.mp4
 ```
 
 One box of volume V, four times over: water, ice, solid iron, and the same
@@ -290,10 +290,10 @@ object would slide while the water it displaces jumped.
 ## The voice
 
 ```bash
-python python/examples/archimedes/narrate.py           # what would be said
+python archimedes/narrate.py           # what would be said
 KIRI_API_KEY=... python .../narrate.py --write         # record the missing
-.venv/bin/python python/examples/archimedes/main.py km # render, voice and all
-.venv/bin/python -m codimate.preview python/examples/archimedes/main.py km  # hear it without rendering
+.venv/bin/python archimedes/main.py km # render, voice and all
+.venv/bin/python -m codimate.preview archimedes/main.py km  # hear it without rendering
 ```
 
 The Khmer film is narrated; the English one is silent and keeps the reading

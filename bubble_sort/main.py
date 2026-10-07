@@ -1,6 +1,6 @@
 """Bubble sort, end to end.
 
-    python python/examples/bubble_sort/main.py
+    python bubble_sort/main.py
 
 Four pieces: the algorithm, the view, the motion, the timing.
 Nothing here knows what a frame is.

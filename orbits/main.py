@@ -1,6 +1,6 @@
 """Sun, Earth and Moon — the science kit, end to end.
 
-    .venv/bin/python python/examples/orbits/main.py
+    .venv/bin/python orbits/main.py
 
 It starts close on Earth and its Moon, then the camera backs away and pans to
 the Sun, until the whole year is one ellipse. Every picture is built from

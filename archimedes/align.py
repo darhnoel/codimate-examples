@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Hear where every word falls in its own recording. Authoring-time only.
 
-    python python/examples/archimedes/align.py            # report only
+    python archimedes/align.py            # report only
     KIRI_API_KEY=... python .../align.py --write          # transcribe and write
 
 The film runs a mark along the caption as it is spoken. Where that mark goes

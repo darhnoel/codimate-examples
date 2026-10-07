@@ -1,6 +1,6 @@
 """Manim's `DifferentRotations`, written in Codimate.
 
-    python python/examples/manim/different_rotations.py
+    python manim/different_rotations.py
 
     self.play(
         left_square.animate.rotate(PI), Rotate(right_square, angle=PI), run_time=2

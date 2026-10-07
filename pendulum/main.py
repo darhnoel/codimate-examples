@@ -1,6 +1,6 @@
 """A swinging pendulum — continuous motion from sampled physics.
 
-    .venv/bin/python python/examples/pendulum/main.py
+    .venv/bin/python pendulum/main.py
 
 The simulation advances at a fixed time step and records one moment per tick.
 Codimate connects those closely spaced moments with linear motion; it does not

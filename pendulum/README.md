@@ -1,7 +1,7 @@
 # Pendulum — continuous motion from sampled physics
 
 ```bash
-.venv/bin/python python/examples/pendulum/main.py
+.venv/bin/python pendulum/main.py
 ```
 
 A pendulum released at 50 degrees swings under gravity while a little damping

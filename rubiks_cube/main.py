@@ -1,6 +1,6 @@
 """A Rubik's cube solving itself, and the same cube drawn as nine circles.
 
-    python python/examples/rubiks_cube/main.py
+    python rubiks_cube/main.py
 
 A turn is a layer rotating ninety degrees. It is sampled into steps and handed
 over one at a time — the way `dharma_wheel` turns and `pendulum` swings —

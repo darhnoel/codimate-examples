@@ -1,6 +1,6 @@
 """Archimedes' principle, from a box of water to a steel ship.
 
-    python python/examples/archimedes/main.py
+    python archimedes/main.py
 
 The whole film is one object. `"body"` is a box of water, then ice, then steel,
 then a ship's hull — never replaced, only changed — so the viewer's eye carries

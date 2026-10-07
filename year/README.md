@@ -5,7 +5,7 @@ days in 23 seconds of motion — with the motion taken from the sky and only the
 made up.
 
 ```bash
-.venv/bin/python python/examples/year/main.py
+.venv/bin/python year/main.py
 ```
 
 Small points on the orbit mark the six places where something happens: closest and

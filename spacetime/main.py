@@ -1,6 +1,6 @@
 """Space deformed by a mass moving through it.
 
-    python python/examples/spacetime/main.py
+    python spacetime/main.py
 
 A regular lattice, with every point moved to where it would have *fallen* from
 rest after one fixed stretch of time. The mass goes round a small circle and

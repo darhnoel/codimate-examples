@@ -1,7 +1,7 @@
 # The helical model — and what the popular video gets wrong
 
 ```bash
-.venv/bin/python python/examples/helical_solar_system/main.py
+.venv/bin/python helical_solar_system/main.py
 ```
 
 The Sun is not still. It carries the whole system through the galaxy at about

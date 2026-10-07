@@ -1,6 +1,6 @@
 """Mark Khmer word boundaries in this film's captions. Authoring-time only.
 
-    .venv/bin/python python/examples/year/segment_lines.py
+    .venv/bin/python year/segment_lines.py
 
 Writes `lines.py`, which the film imports; the film needs no segmenter. The
 words are U+200B-marked the way `archimedes/segment.py` does it, and that file

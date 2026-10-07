@@ -1,8 +1,8 @@
 # Coming from Manim
 
 ```bash
-.venv/bin/python python/examples/manim/main.py              # all five
-.venv/bin/python python/examples/manim/different_rotations.py   # or just one
+.venv/bin/python manim/main.py              # all five
+.venv/bin/python manim/different_rotations.py   # or just one
 ```
 
 Five of Manim's tutorial scenes, written here. Not to show Codimate winning —
@@ -184,7 +184,7 @@ library asks for everywhere, and which Manim's two methods are not about.
 
 A path that grows by **adding points** cannot be animated: two polygons with
 different point counts do not interpolate, and the later one stands for the
-whole beat ([ADR 0010](../../../docs/adr/0010-polygons-and-the-payload.md)).
+whole beat ([ADR 0010](https://github.com/darhnoel/codimate/blob/main/docs/adr/0010-polygons-and-a-payload-that-holds-points.md)).
 
 A path that keeps **ninety-six points throughout** and spreads them over a
 longer and longer run animates perfectly, and at the end the last point lands

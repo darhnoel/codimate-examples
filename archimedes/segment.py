@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Mark Khmer word boundaries in this example's words. Authoring-time only.
 
-    python python/examples/archimedes/segment.py            # report only
-    python python/examples/archimedes/segment.py --write    # rewrite in place
+    python archimedes/segment.py            # report only
+    python archimedes/segment.py --write    # rewrite in place
 
 Khmer does not separate words with spaces, so a line cannot run word by word
 without knowing where its words are. Finding that out needs a dictionary and a

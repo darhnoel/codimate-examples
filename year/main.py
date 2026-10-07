@@ -1,6 +1,6 @@
 """One year of the Sun, Earth and Moon, as it was in 2025.
 
-    .venv/bin/python python/examples/year/main.py
+    .venv/bin/python year/main.py
 
 365 days in 23 seconds, from 1 January round to the next. The motion is real —
 eccentricity, the date of closest approach, the Moon's tilted and turning orbit,

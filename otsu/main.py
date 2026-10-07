@@ -1,6 +1,6 @@
 """Otsu's method — choosing a threshold by looking at the histogram.
 
-    python python/examples/otsu/main.py
+    python otsu/main.py
 
 Four panels, revealed one at a time: the picture, the mask it makes, the
 histogram the threshold cuts, and the score that cutting earns. The threshold
