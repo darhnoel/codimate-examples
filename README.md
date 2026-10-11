@@ -15,16 +15,14 @@ expect.
 ```bash
 git clone https://github.com/darhnoel/codimate-examples && cd codimate-examples
 python3 -m venv .venv
-.venv/bin/pip install -r requirements.txt     # builds Codimate's Rust engine: needs Rust
+.venv/bin/pip install -r requirements.txt
 brew install ffmpeg typst                     # ffmpeg encodes; typst typesets formulas
 .venv/bin/python bubble_sort/main.py          # writes results/bubble_sort.mp4
 ```
 
 Run any example from the repository root. Each writes its video into `results/`, which
 is not committed. Resolution is a render argument (`scale=1.5`), not something the views
-know about. `requirements.txt` installs Codimate from its `main` branch until the next
-release; some examples use the science kit and the Previewer, which the last PyPI
-release (0.1.5) does not have.
+know about. `requirements.txt` installs Codimate 0.2 from PyPI, a prebuilt wheel, so no Rust is needed.
 
 Several examples have a Khmer narration. That needs a [Kiri TTS](https://www.kiritts.com)
 key in `.env` (`KIRI_API_KEY=...`, never committed) and spends credits; without the audio

@@ -11,8 +11,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Codimate's engine is Rust, and `requirements.txt` builds it from its main branch.
-      - uses: dtolnay/rust-toolchain@stable
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -25,8 +23,6 @@ jobs:
           typst --version
 
       - name: Install
-        env:
-          HARFBUZZ_SYS_NO_PKG_CONFIG: "1"   # the harfbuzz the published wheels vendor
         run: |
           python -m venv .venv
           .venv/bin/pip install --quiet -r requirements.txt ruff

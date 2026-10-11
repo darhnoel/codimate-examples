@@ -1,6 +1,6 @@
-# Codimate itself, from its main branch until the next release: the science kit, the
-# Previewer and the compact index these examples use are newer than 0.1.5 on PyPI.
-codimate @ git+https://github.com/darhnoel/codimate@main
+# Codimate itself. 0.2 is the first release with the science kit, the Previewer
+# and the compact index these examples use.
+codimate>=0.2,<0.3
 
 # otsu (and fourier_einstein, kept local) read and process images.
 numpy
