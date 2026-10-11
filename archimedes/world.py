@@ -113,15 +113,20 @@ def settles(rho, w=None, h=None):
     h = BOX_H if h is None else h
     if rho > RHO_WATER:
         return FLOOR
-    # Equality is the neutral case, and it is not a special one: the fraction
-    # comes out at 1.0 and the body hangs exactly full under, which is what
-    # the box of water does.
+    # Equality is the neutral case. A body exactly as dense as water can rest
+    # at any depth once it is fully under: no position is preferred. This
+    # returns one valid choice, just fully under the surface, which is where
+    # the film puts the box of water.
     return floating_bottom(rho / RHO_WATER, w, h)
 
 
 # ----------------------------------------------------------------- the box
 
 BOX_W, BOX_H = 230.0, 170.0
+# The model is a 2D cross-section of uniform depth: an area stands for a volume, and
+# the air inside weighs nothing. Every number in the film (91.7%, 10%, 783 kg/m³,
+# 78.3%) is exact for that model. The drawn corners are rounded; the areas here
+# are computed as rectangles, a small difference in the picture, not in the numbers.
 BOX_AREA = BOX_W * BOX_H                 # the "volume V" the film talks about
 
 POINTS = 240            # per outline, fixed, so the box can morph into a hull
@@ -248,25 +253,7 @@ def thinning(along):
     return 0.5 * (lo + hi)
 
 
-def _lift_off():
-    """How far into the thinning the box first carries its own weight.
 
-    Always near the end: iron is 7.85 times water, so all but an eighth of it
-    has to be gone before the average drops under 1,000. The film uses this to
-    overlap the last of the thinning with the rise, so a box that can float is
-    never shown sitting on the bottom.
-    """
-    lo, hi = 0.0, 1.0
-    for _ in range(60):
-        mid = 0.5 * (lo + hi)
-        if density(RHO_IRON, thinning(mid)) > RHO_WATER:
-            lo = mid
-        else:
-            hi = mid
-    return max(0.0, lo - 0.05)
-
-
-LIFTS_AT = _lift_off()
 
 
 def outline(middle):
@@ -405,9 +392,6 @@ def _the_body_finds_its_own_level():
         assert where <= was + 1e-9, "it sank back down"
         was = where
     assert lifts == 1, ("it should lift off exactly once", lifts)
-
-    # And the overlap point is before the crossing, not after it.
-    assert density(RHO_IRON, thinning(LIFTS_AT)) > RHO_WATER, "overlap too late"
 
 
 def _the_surface_and_the_depth_agree():

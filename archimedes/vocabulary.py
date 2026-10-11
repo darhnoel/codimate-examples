@@ -36,7 +36,7 @@ EN_SCENES = {
     "waterbox": ("A box of water, in water",
                  "Lower it in, and watch the surface rather than the box."),
     "displace": ("A box of water, in water",
-                 "The water climbs by exactly the volume that went in."),
+                 "The surface rises: the box takes up room the water had."),
     "neutral": ("It neither rises nor sinks",
                 "Made of the same stuff as the water around it, it just "
                 "stays."),
@@ -150,9 +150,9 @@ KM = {
 
 
     # captions
-    "hook2": "លោហៈ​មាន​ម៉ាស​ដូចគ្នា បាតុភូត​មិន​ដូចគ្នា",
+    "hook2": "លោហៈ​ដូចគ្នា​ប៉ុន្តែ​មួយ​លិច​មួយ​អណ្ដែត។",
     "one_box": "ប្រអប់​មួយ​មាន​មាឌ V",
-    "climbs": "មាឌ​ទឹក​កើនឡើង​តាម​មាឌ​ប្រអប់​ដែល​លិច​ចូល​ទៅ",
+    "climbs": "ផ្ទៃ​ទឹក​ឡើង​ខ្ពស់​ពេល​ប្រអប់​លិច​ចូល​ទៅ​ក្នុង​ទឹក។",
     "weighs": "ទឹកដែល​វា​រុញ​ចេញ មានទម្ងន់​ស្មើនឹង​ទម្ងន់​ប្រអប់",
     "same_box": "ប្រអប់​ដដែល​ហើយ​មាន​មាឌ V ដដែល",
     "less_mass": "ប្រអប់​មាន​មាឌ​ដដែល តែ​មាន​ម៉ាស​តិច​ជាង​មុន",

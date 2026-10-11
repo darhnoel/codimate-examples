@@ -38,7 +38,11 @@ except the two pools and the box:
 | 10% of the iron left | what a 5px wall holds, over the box's area |
 | average density 783 kg/m³ | iron, times the fraction of it still there |
 | 78.3% draft | that density over water's |
-| lift-off at 92% | where the average first drops under 1,000 |
+| lift-off at a 6.4px wall | where the average first drops under 1,000 |
+
+These hold for a 2D cross-section of uniform depth, where an area stands for a
+volume and the air inside weighs nothing; the drawn corners are rounded, the areas
+are computed as rectangles. (`world.py` says the same beside `BOX_AREA`.)
 
 The ship floating is therefore a consequence of the drawing, not a figure
 chosen to make the point come out. `world.py` checks it: at every floating
