@@ -1,7 +1,8 @@
 # Codimate examples
 
 Worked examples for [Codimate](https://github.com/darhnoel/codimate): explainer videos
-made from Python. One folder per example, one `main.py` inside it, and a README saying
+made from Python. Each example is a folder, inside one of four subject folders: `physics/`,
+`mathematics/`, `computing/` and `about-codimate/`. Each has one `main.py`, and a README saying
 what that example teaches. The library, its guide and its reference are in the
 [main repository](https://github.com/darhnoel/codimate), and
 [the site](https://darhnoel.github.io/codimate/).
@@ -17,7 +18,7 @@ git clone https://github.com/darhnoel/codimate-examples && cd codimate-examples
 python3 -m venv .venv
 .venv/bin/pip install -r requirements.txt
 brew install ffmpeg typst                     # ffmpeg encodes; typst typesets formulas
-.venv/bin/python bubble_sort/main.py          # writes results/bubble_sort.mp4
+.venv/bin/python computing/bubble_sort/main.py          # writes results/bubble_sort.mp4
 ```
 
 Run any example from the repository root. Each writes its video into `results/`, which
@@ -36,12 +37,12 @@ they render silent, and `--silent` forces that.
 .venv/bin/python tests/run.py --render year maxwell    # or only those
 ```
 
-Examples are found, not listed: a new folder with a `main.py` is covered the day it is
-added. `ruff check` must pass too, including no function with more than five arguments.
+Examples are found, not listed: a new folder with a `main.py` inside a subject folder is covered
+the day it is added. `ruff check` must pass too, including no function with more than five arguments.
 
 ## Start here
 
-**[`bubble_sort/`](bubble_sort/)** — things that **move**.
+**[`computing/bubble_sort/`](computing/bubble_sort/)** — things that **move**.
 
 Bars slide when they swap. Names follow the *thing*, so `cm.items()` gives each
 value an identity of its own and the Engine can tell that bar 3 travelled
@@ -50,7 +51,7 @@ assumes it.
 
 ## The one decision Codimate cannot make for you
 
-**[`galton_board/`](galton_board/)** — both kinds of name, side by side.
+**[`mathematics/galton_board/`](mathematics/galton_board/)** — both kinds of name, side by side.
 
 Pegs and bins never move, so their names follow the *place*:
 `("peg", row, i)`, no `cm.items()` anywhere. Balls do move, so each is named
@@ -63,7 +64,7 @@ Everything else is a consequence of choosing between those two.
 
 ## Motion you might think needs a new feature
 
-**[`dharma_wheel/`](dharma_wheel/)** — a turning wheel, with no rotation in the
+**[`mathematics/dharma_wheel/`](mathematics/dharma_wheel/)** — a turning wheel, with no rotation in the
 API.
 
 The trace says where the spokes are every 15 degrees and the Engine fills in
@@ -72,7 +73,7 @@ time. The README works through why 15 degrees and not 45.
 
 ## Continuous motion from sampled physics
 
-**[`pendulum/`](pendulum/)** — gravity supplies the acceleration; Codimate
+**[`physics/pendulum/`](physics/pendulum/)** — gravity supplies the acceleration; Codimate
 connects the moments.
 
 The simulation advances angle and angular velocity at a fixed time step. The
@@ -81,7 +82,7 @@ keeps that already-continuous motion from stopping at every event.
 
 ## Getting it right when the famous version does not
 
-**[`helical_solar_system/`](helical_solar_system/)** — the Sun moves, so every
+**[`physics/helical_solar_system/`](physics/helical_solar_system/)** — the Sun moves, so every
 orbit is a helix.
 
 The popular "solar system is a vortex" video has the orbital plane square to
@@ -89,7 +90,7 @@ the direction of travel and the planets trailing behind like a comet's tail.
 Neither is true. This one inclines the plane 60° and lets half of each orbit
 run ahead of the Sun, which is what actually happens.
 
-**[`bernoulli_lift/`](bernoulli_lift/)** — and the story that goes with it.
+**[`physics/bernoulli_lift/`](physics/bernoulli_lift/)** — and the story that goes with it.
 
 The air over a wing really is faster and really is at lower pressure. The
 "equal transit time" reason for it is not true, and this measures the two
@@ -99,7 +100,7 @@ choices.
 
 ## When the drawing already knows something
 
-**[`rubiks_cube/`](rubiks_cube/)** — a cube solving itself, beside a drawing
+**[`mathematics/rubiks_cube/`](mathematics/rubiks_cube/)** — a cube solving itself, beside a drawing
 that turned out to be the same cube.
 
 Nine overlapping circles, twelve places on each, every place on exactly two.
@@ -112,7 +113,7 @@ each of those is written down where it happened.
 
 ## Drawing something with no library help at all
 
-**[`spacetime/`](spacetime/)** — a lattice of space deformed by a mass inside
+**[`physics/spacetime/`](physics/spacetime/)** — a lattice of space deformed by a mass inside
 it, in wireframe 3D.
 
 Codimate has no camera, no depth buffer and no 3D of any kind, so this one
@@ -124,7 +125,7 @@ to freeze the order, which is free when nothing is filled.
 
 ## Explaining a physical thing, with a kit
 
-**[`orbits/`](orbits/)** — the Sun, the Earth and the Moon, and a camera pulling
+**[`physics/orbits/`](physics/orbits/)** — the Sun, the Earth and the Moon, and a camera pulling
 back from one to all three.
 
 Built from [`codimate.science`](https://github.com/darhnoel/codimate/blob/main/docs/reference.md#the-science-kit) alone:
@@ -133,7 +134,7 @@ easy and for what it did not: one moment per frame or the draw order tears, name
 that follow bodies collide unless something moves them, and a pull-back is `dolly`,
 not `moved`.
 
-**[`maxwell/`](maxwell/)** — how did Maxwell find his equations? Nine scenes in Khmer,
+**[`physics/maxwell/`](physics/maxwell/)** — how did Maxwell find his equations? Nine scenes in Khmer,
 from a compass and a wire to the number that matched light.
 
 Every equation is LaTeX, written on the moment its discovery happens, and Maxwell's own
@@ -141,14 +142,14 @@ term is a separate formula so it can arrive alone. It is here for the narration:
 word is lined up with the voice by transcribing the recording, and for how a long film
 splits into one module per scene.
 
-**[`cavendish/`](cavendish/)** — how do you weigh the Earth? Two minutes of Khmer
+**[`physics/cavendish/`](physics/cavendish/)** — how do you weigh the Earth? Two minutes of Khmer
 captions, a torsion balance, and a zoom out through four scales to say how small the
 twist was.
 
 The long film the science kit was cut out of, drawn by hand and kept as it was. It is
 here for the captions that pace the scenes, and for zoom levels nested round one point.
 
-**[`year/`](year/)** — the same three bodies for a real 365 days, 2025.
+**[`physics/year/`](physics/year/)** — the same three bodies for a real 365 days, 2025.
 
 The motion is taken from the sky and only the sizes are made up: true eccentricity
 and closest approach, the equinoxes and solstices on their dates, a Moon whose
@@ -157,7 +158,7 @@ knows nothing about drawing; its test checks it against the almanac.
 
 ## When the numbers have to be real
 
-**[`archimedes/`](archimedes/)** — one box that becomes water, ice, steel and
+**[`physics/archimedes/`](physics/archimedes/)** — one box that becomes water, ice, steel and
 then a ship.
 
 It is one name the whole way through, so the Engine tweens between the four
@@ -170,7 +171,7 @@ It is also the example that renders in two languages — `main.py km` gives the
 Khmer one — and the README says what that took, which was less than you would
 think everywhere except the title card that types itself on.
 
-**[`otsu/`](otsu/)** — a threshold chosen by looking at the histogram.
+**[`computing/otsu/`](computing/otsu/)** — a threshold chosen by looking at the histogram.
 
 The example where Codimate cannot help: an image is pixels, and `scene.image`
 places a file without being able to compute one, so a sliding threshold is a
@@ -179,16 +180,7 @@ three places where a jump in the threshold drew a chord instead of a path.
 
 ## An interface, not a diagram
 
-**[`keyboard/`](keyboard/)** — a phone keyboard, typed on.
-
-Keys never move, so each is named after its place and a press is a colour change; the
-glow behind it is three faint plates whose opacity the Engine tweens; the typed letters
-are named by position, so a new one fades in and a deleted one fades out. It also draws
-every icon from lines, since there is no emoji font.
-
-## An interface, not a diagram
-
-**[`keyboard/`](keyboard/)** — a phone keyboard, typed on.
+**[`computing/keyboard/`](computing/keyboard/)** — a phone keyboard, typed on.
 
 Keys never move, so each is named after its place and a press is a colour change; the
 glow behind it is three faint plates whose opacity the Engine tweens; the typed letters
@@ -197,7 +189,7 @@ every icon from lines, since there is no emoji font.
 
 ## If you are coming from Manim
 
-**[`manim/`](manim/)** — five of Manim's tutorial scenes, translated.
+**[`about-codimate/manim/`](about-codimate/manim/)** — five of Manim's tutorial scenes, translated.
 
 Not a fight Codimate wins: for two shapes and three verbs, a library built
 around shapes-and-verbs is shorter, and the README says so. It is here because
@@ -229,7 +221,7 @@ blocks, which is the ceremony the Python surface exists to remove
 Codimate.** That is the test, and it is easy to apply:
 
 ```text
-rubiks_cube/
+mathematics/rubiks_cube/
     main.py        the four pieces, together, plus the view
     cube.py        the cube as a permutation of 54 stickers — no drawing at all
     geometry.py    where a sticker is in space, and what a turn does to it
@@ -253,7 +245,7 @@ that could be checked without rendering anything. `bubble_sort` (57 lines) and
 ## Adding one
 
 ```text
-your_example/
+physics/your_example/          the subject folder it belongs in
     main.py       the whole explanation
     README.md     what it teaches, and what to try changing
 ```

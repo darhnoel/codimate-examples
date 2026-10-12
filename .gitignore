@@ -14,11 +14,11 @@ __pycache__/
 # Narration: audio from a paid API, kept only so it need not be bought again.
 # Not ours to publish. Each example's `speak.py` (or `narrate.py`) rebuilds it from
 # the captions and a key.
-*/audio/
+*/*/audio/
 
 # Examples kept local. `fourier_einstein` traces a copyrighted engraving it reads at
 # build time, so the input is not ours to redistribute even though the code is;
 # `pypi_nightly` is a one-off announcement clip.
-/fourier_einstein/
-/pypi_nightly/
+/mathematics/fourier_einstein/
+/about-codimate/pypi_nightly/
 /attention/

@@ -13,7 +13,7 @@ import support
 import codimate as cm
 from codimate import preview
 
-FILM = Path(__file__).resolve().parents[1] / "maxwell" / "main.py"
+FILM = Path(__file__).resolve().parents[1] / "physics" / "maxwell" / "main.py"
 _built = []
 
 

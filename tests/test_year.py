@@ -1,4 +1,4 @@
-"""`year/sky.py` against the sky: the dates it must reproduce.
+"""`physics/year/sky.py` against the sky: the dates it must reproduce.
 
 Times are from the 2025 almanac (UTC). Nothing renders here.
 """
@@ -10,7 +10,7 @@ from pathlib import Path
 from codimate import science
 
 _spec = importlib.util.spec_from_file_location(
-    "sky", Path(__file__).resolve().parents[1] / "year" / "sky.py")
+    "sky", Path(__file__).resolve().parents[1] / "physics" / "year" / "sky.py")
 sky = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(sky)
 

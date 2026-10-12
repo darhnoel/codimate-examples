@@ -10,7 +10,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-EXAMPLES = sorted(ROOT.glob("*/main.py"))
+EXAMPLES = sorted(ROOT.glob("*/*/main.py"))
 
 # `run.py --render <name>...` grades only those.
 _only = [n for n in os.environ.get("CODIMATE_ONLY", "").split(",") if n]

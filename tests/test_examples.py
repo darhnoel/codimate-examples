@@ -13,11 +13,11 @@ import codimate as cm
 from codimate import preview
 
 ROOT = Path(__file__).resolve().parents[1]
-EXAMPLES = sorted(ROOT.glob("*/main.py"))
+EXAMPLES = sorted(ROOT.glob("*/*/main.py"))
 
 
 def test_there_are_examples():
-    assert EXAMPLES, "no */main.py found: has the layout changed?"
+    assert EXAMPLES, "no */*/main.py found: has the layout changed?"
 
 
 def test_every_example_builds_and_every_formula_in_it_typesets():
