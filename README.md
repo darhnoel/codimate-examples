@@ -171,13 +171,6 @@ It is also the example that renders in two languages — `main.py km` gives the
 Khmer one — and the README says what that took, which was less than you would
 think everywhere except the title card that types itself on.
 
-**[`computing/otsu/`](computing/otsu/)** — a threshold chosen by looking at the histogram.
-
-The example where Codimate cannot help: an image is pixels, and `scene.image`
-places a file without being able to compute one, so a sliding threshold is a
-sequence of PNGs written before the render. The README is mostly about the
-three places where a jump in the threshold drew a chord instead of a path.
-
 ## An interface, not a diagram
 
 **[`computing/keyboard/`](computing/keyboard/)** — a phone keyboard, typed on.

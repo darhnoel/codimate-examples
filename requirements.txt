@@ -2,7 +2,7 @@
 # and the compact index these examples use.
 codimate>=0.2,<0.3
 
-# otsu (and fourier_einstein, kept local) read and process images.
+# fourier_einstein (kept local) reads and processes images.
 numpy
 pillow
 scikit-image
