@@ -4,14 +4,9 @@ The water is checked, not the picture: a dropped stone's ring must be round and
 must travel at the wave speed, and damping must take height away, never add it.
 """
 
-import importlib.util
 import math
-from pathlib import Path
 
-_spec = importlib.util.spec_from_file_location(
-    "pool", Path(__file__).resolve().parents[1] / "physics" / "ripple" / "pool.py")
-pool = importlib.util.module_from_spec(_spec)
-_spec.loader.exec_module(pool)
+import pool
 
 
 def test_the_grid_is_stable():
@@ -75,8 +70,9 @@ def test_the_landing_lifts_the_centre_gradually_to_the_full_dome():
 
 if __name__ == "__main__":
     import sys
-    from pathlib import Path as _P
+    from pathlib import Path
 
-    sys.path.insert(0, str(_P(__file__).resolve().parent))
+    sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "tests"))
     import support
+
     raise SystemExit(support.run(globals()))

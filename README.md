@@ -38,7 +38,9 @@ they render silent, and `--silent` forces that.
 ```
 
 Examples are found, not listed: a new folder with a `main.py` inside a subject folder is covered
-the day it is added. `ruff check` must pass too, including no function with more than five arguments.
+the day it is added. An example's own tests sit in its folder, beside the code they check,
+so removing the example removes them: `python physics/ripple/test_ripple.py` runs one on its
+own, and `tests/run.py` finds them all. `ruff check` must pass too, including no function with more than five arguments.
 
 ## Start here
 
@@ -241,6 +243,7 @@ that could be checked without rendering anything. `bubble_sort` (57 lines) and
 physics/your_example/          the subject folder it belongs in
     main.py       the whole explanation
     README.md     what it teaches, and what to try changing
+    test_*.py     checks for any part split out of main.py, if there is one
 ```
 
 Start with one file. Split a part out only when you could test it on its own.

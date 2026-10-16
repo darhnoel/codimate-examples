@@ -52,7 +52,7 @@ with `cm.measure_math`.
 
 **Use `∂`, not `\partial`.** The LaTeX bridge turns `\partial` into a Typst
 symbol that Typst 0.15 does not have, so the equation fails to typeset. The
-Unicode `∂` passes straight through. `tests/test_maxwell.py` typesets every
+Unicode `∂` passes straight through. `test_maxwell.py` typesets every
 formula in the film, which is how this was found.
 
 **A picture driven by one number.** Each scene is a function of `u`, how far

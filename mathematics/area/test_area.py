@@ -1,13 +1,8 @@
 """The area lesson's coordinate calculations need no Codimate render."""
 
 import math
-import sys
-from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT))
-
-from mathematics.area.geometry import AreaLayout, brace_path  # noqa: E402
+from geometry import AreaLayout, brace_path
 
 
 def test_rectangle_rows_keep_their_width_and_centre():
@@ -49,3 +44,13 @@ def test_brace_starts_and_ends_at_its_requested_length():
 
     assert math.isclose(path[0][0], 0)
     assert math.isclose(path[-1][0], 100)
+
+
+if __name__ == "__main__":
+    import sys
+    from pathlib import Path
+
+    sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "tests"))
+    import support
+
+    raise SystemExit(support.run(globals()))

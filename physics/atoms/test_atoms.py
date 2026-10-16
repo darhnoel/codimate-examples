@@ -5,14 +5,9 @@ hydrogen has one proton and one electron. Each electron stays on its own circle,
 and the inner shells go round faster.
 """
 
-import importlib.util
 import math
-from pathlib import Path
 
-_spec = importlib.util.spec_from_file_location(
-    "bohr", Path(__file__).resolve().parents[1] / "physics" / "atoms" / "bohr.py")
-bohr = importlib.util.module_from_spec(_spec)
-_spec.loader.exec_module(bohr)
+import bohr
 
 
 def test_iron_56_and_hydrogen_nuclei():
@@ -52,6 +47,9 @@ def test_an_electron_comes_back_after_one_period():
 
 if __name__ == "__main__":
     import sys
-    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    from pathlib import Path
+
+    sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "tests"))
     import support
+
     raise SystemExit(support.run(globals()))

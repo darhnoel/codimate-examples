@@ -6,14 +6,12 @@ the LaTeX bridge, which caught `\\partial` (the bridge writes a Typst symbol the
 installed Typst does not have). Needs `typst` on PATH, like the film itself.
 """
 
-import importlib.util
 from pathlib import Path
 
-import support
 import codimate as cm
 from codimate import preview
 
-FILM = Path(__file__).resolve().parents[1] / "physics" / "maxwell" / "main.py"
+FILM = Path(__file__).resolve().parent / "main.py"
 _built = []
 
 
@@ -43,12 +41,17 @@ def test_the_film_lasts_as_long_as_its_scenes_and_ends_still():
 
 
 def test_each_scene_names_a_caption_that_exists():
-    spec = importlib.util.spec_from_file_location("lines", FILM.parent / "lines.py")
-    lines = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(lines)
+    import lines
+
     keys = {event.state["line"] for event in film().trace.events} - {""}
     assert keys <= set(lines.SAY) and len(keys) == 9
 
 
 if __name__ == "__main__":
+    import sys
+    from pathlib import Path
+
+    sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "tests"))
+    import support
+
     raise SystemExit(support.run(globals()))

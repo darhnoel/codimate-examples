@@ -3,16 +3,11 @@
 Times are from the 2025 almanac (UTC). Nothing renders here.
 """
 
-import importlib.util
 import math
-from pathlib import Path
 
 from codimate import science
 
-_spec = importlib.util.spec_from_file_location(
-    "sky", Path(__file__).resolve().parents[1] / "physics" / "year" / "sky.py")
-sky = importlib.util.module_from_spec(_spec)
-_spec.loader.exec_module(sky)
+import sky
 
 
 def earth_at(day):
@@ -79,3 +74,13 @@ def test_the_arrivals_come_in_the_order_of_the_year():
     assert abs(days["june"] - 171.113) < 0.1, "21 Jun 02:42"
     assert abs(days["december"] - 354.627) < 0.1, "21 Dec 15:03"
     assert abs(days["perihelion"] - 3.56) < 1.5 and abs(days["aphelion"] - 183.87) < 1.5
+
+
+if __name__ == "__main__":
+    import sys
+    from pathlib import Path
+
+    sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "tests"))
+    import support
+
+    raise SystemExit(support.run(globals()))

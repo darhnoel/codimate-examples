@@ -2,7 +2,7 @@
 
 These are plain `assert` tests with no framework. Each file runs on its own:
 
-    python tests/test_year.py
+    python physics/year/test_year.py
 
 and the whole set runs with:
 

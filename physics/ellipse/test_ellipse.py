@@ -5,14 +5,9 @@ must swing between the closest and farthest points of the ellipse, and its
 energy must not drift.
 """
 
-import importlib.util
 import math
-from pathlib import Path
 
-_spec = importlib.util.spec_from_file_location(
-    "orbit", Path(__file__).resolve().parents[1] / "physics" / "ellipse" / "orbit.py")
-orbit = importlib.util.module_from_spec(_spec)
-_spec.loader.exec_module(orbit)
+import orbit
 
 STEPS = 20000
 
@@ -53,6 +48,9 @@ def test_the_period_is_kepler_s():
 
 if __name__ == "__main__":
     import sys
-    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    from pathlib import Path
+
+    sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "tests"))
     import support
+
     raise SystemExit(support.run(globals()))

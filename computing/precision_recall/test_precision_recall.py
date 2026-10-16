@@ -1,15 +1,9 @@
-"""`computing/precision_recall/mail.py` against every fraction the film shows.
+"""`mail.py` against every fraction the film shows.
 
 Nothing renders here.
 """
 
-import sys
-from pathlib import Path
-
-ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT))
-
-from computing.precision_recall.mail import MAIL, precision, recall  # noqa: E402
+from mail import MAIL, precision, recall
 
 
 def test_20_emails_of_which_5_are_spam():
@@ -37,6 +31,10 @@ def test_strict_catches_all_spam_but_blocks_good_mail():
 
 
 if __name__ == "__main__":
-    from support import run
+    import sys
+    from pathlib import Path
 
-    raise SystemExit(run(globals()))
+    sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "tests"))
+    import support
+
+    raise SystemExit(support.run(globals()))
