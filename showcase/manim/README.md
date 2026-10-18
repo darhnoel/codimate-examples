@@ -1,8 +1,8 @@
 # Coming from Manim
 
 ```bash
-.venv/bin/python about-codimate/manim/main.py              # all five
-.venv/bin/python about-codimate/manim/different_rotations.py   # or just one
+.venv/bin/python showcase/manim/main.py              # all five
+.venv/bin/python showcase/manim/different_rotations.py   # or just one
 ```
 
 Five of Manim's tutorial scenes, written here. Not to show Codimate winning —

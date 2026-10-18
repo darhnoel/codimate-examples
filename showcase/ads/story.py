@@ -10,7 +10,7 @@ from dataclasses import dataclass, field
 
 import codimate as cm
 
-from look import TITLES
+from look import titles
 
 CODE = "x = 0\nfor step in range(5):\n    x += step"
 BARS = (5, 1, 4, 2, 3)
@@ -21,7 +21,7 @@ SECTION = 5.0  # every section after the opening lasts five seconds
 @dataclass
 class Film:
     phase: str = "intro"
-    titles: dict = field(default_factory=lambda: dict.fromkeys(TITLES, "hidden"))
+    titles: dict = field(default_factory=lambda: dict.fromkeys(titles(), "hidden"))
     typing: str = ""
     ball_x: float = 330
     ball_visible: bool = False

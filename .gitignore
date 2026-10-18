@@ -20,6 +20,6 @@ __pycache__/
 # build time, so the input is not ours to redistribute even though the code is;
 # `pypi_nightly` is a one-off announcement clip.
 /mathematics/fourier_einstein/
-/about-codimate/pypi_nightly/
+/showcase/pypi_nightly/
 /attention/
 /eyetwist/

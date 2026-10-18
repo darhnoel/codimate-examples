@@ -1,6 +1,6 @@
 """Manim's `AnimateExample`, written in Codimate.
 
-    python about-codimate/manim/animate_example.py
+    python showcase/manim/animate_example.py
 
     square = Square().set_fill(RED, opacity=1.0)
     self.add(square)

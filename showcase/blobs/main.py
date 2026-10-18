@@ -1,7 +1,7 @@
 """A cluster of shaded balls, turning: 3D on a 2D engine, two ways.
 
-    .venv/bin/python about-codimate/blobs/main.py          # stacked circles
-    .venv/bin/python about-codimate/blobs/main.py mesh     # the science kit's meshes
+    .venv/bin/python showcase/blobs/main.py          # stacked circles
+    .venv/bin/python showcase/blobs/main.py mesh     # the science kit's meshes
 
 Forty off-white balls, the way a microscope's software shows segmented cell
 nuclei, with the camera walking once round them. A `science.Camera` places them

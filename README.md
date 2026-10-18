@@ -36,4 +36,4 @@ python3 -m venv .venv
 
 The video is written to `results/bubble_sort.mp4`.
 
-Browse [computing](computing/), [mathematics](mathematics/), [physics](physics/), and [Codimate internals](about-codimate/).
+Browse [computing](computing/), [mathematics](mathematics/), [physics](physics/), and [showcase](showcase/).

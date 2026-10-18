@@ -5,8 +5,8 @@ nuclei, with the camera walking once round them. A demonstration of what
 `codimate.science` draws in 3D, on an Engine that is only 2D.
 
 ```bash
-.venv/bin/python about-codimate/blobs/main.py          # stacked circles: results/blobs.mp4
-.venv/bin/python about-codimate/blobs/main.py mesh     # meshes: results/blobs_mesh.mp4
+.venv/bin/python showcase/blobs/main.py          # stacked circles: results/blobs.mp4
+.venv/bin/python showcase/blobs/main.py mesh     # meshes: results/blobs_mesh.mp4
 ```
 
 One turn, 12 seconds, both ways. The camera, the cluster and the light are the

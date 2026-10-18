@@ -8,23 +8,18 @@ from __future__ import annotations
 
 import codimate as cm
 
+import look
 import sound
 from look import (
-    BLUE,
     CENTRE,
     CODE_FONT,
-    INK,
     INTER,
     INTER_BOLD,
     INTER_MEDIUM,
-    MUTED,
-    PALE,
-    TITLES,
-    WHITE,
     WIDTH,
-    YELLOW,
     TextStyle,
     text,
+    titles,
 )
 from story import CODE, Film
 
@@ -44,8 +39,8 @@ SENTENCE = ("See what ", "changed.")
 def view(frame):
     film = frame.state
     scene = cm.Scene()
-    scene.rect("background", w=WIDTH, h=1080, at=(CENTRE, 540)).fill(WHITE)
-    for name, title in TITLES.items():
+    scene.rect("background", w=WIDTH, h=1080, at=(CENTRE, 540)).fill(look.palette.page)
+    for name, title in titles().items():
         if film.titles[name] != "gone":
             title.draw(scene, state=film.titles[name])
     section = SECTIONS.get(film.phase)
@@ -56,7 +51,8 @@ def view(frame):
 
 def _python(scene, film):
     start, end = BALL_PATH
-    scene.line("track", start=(start, FLOOR), end=(end, FLOOR), w=2).fill(PALE)
+    track = scene.line("track", start=(start, FLOOR), end=(end, FLOOR), w=2)
+    track.fill(look.palette.line)
     lines = film.typing.split("\n")
     for index, y in enumerate((470, 560, 650)):
         if index < len(lines) and lines[index]:
@@ -64,7 +60,8 @@ def _python(scene, film):
             style = TextStyle(size=42, y=y, font=CODE_FONT, x=CODE_LEFT + width / 2)
             text(scene, ("code", index), lines[index], style)
     if film.ball_visible:
-        scene.circle("ball", r=34, at=(film.ball_x, FLOOR)).fill(INK).on(layer=1)
+        ball = scene.circle("ball", r=34, at=(film.ball_x, FLOOR))
+        ball.fill(look.palette.ink).on(layer=1)
 
 
 def _bar_slots(bars):
@@ -72,9 +69,12 @@ def _bar_slots(bars):
 
 
 def _sort(scene, film):
-    scene.line("baseline", start=(475, FLOOR), end=(1445, FLOOR), w=2).fill(PALE)
+    colours = look.palette
+    scene.line("baseline", start=(475, FLOOR), end=(1445, FLOOR), w=2).fill(
+        colours.line
+    )
     for slot, item in _bar_slots(film.bars):
-        color = MUTED if item.id in film.comparing else INK
+        color = colours.muted if item.id in film.comparing else colours.ink
         scene.rect(
             ("bar", item.id), w=116, h=item.value * 66, at=cm.at(x=slot.x, bottom=FLOOR)
         ).fill(color)
@@ -88,7 +88,8 @@ def _fonts(scene, film):
     text(scene, "sample", sample, TextStyle(size=size, y=535, font=font)).on(
         opacity=shown
     )
-    label_style = TextStyle(size=30, y=680, font=INTER_MEDIUM, color=MUTED)
+    muted = look.palette.muted
+    label_style = TextStyle(size=30, y=680, font=INTER_MEDIUM, color=muted)
     text(scene, "font_label", label, label_style).on(opacity=shown)
 
 
@@ -107,13 +108,14 @@ def _highlight(scene, film):
     text(scene, "sentence_prefix", prefix, style)
     at = (left + prefix_width + word_width / 2, 550)
     band, words = scene.highlight("key_word", word, size=86, font=INTER_BOLD, at=at)
-    band.fill(YELLOW).write(reveal=film.marker_reveal)
-    words.fill(INK)
+    band.fill(look.palette.marker).write(reveal=film.marker_reveal)
+    words.fill(look.palette.ink)  # their colour when the marker is off them
 
 
 def _brand(scene, film):
     if film.show_install:
-        style = TextStyle(size=38, y=610, font=INTER_MEDIUM, color=BLUE)
+        accent = look.palette.accent
+        style = TextStyle(size=38, y=610, font=INTER_MEDIUM, color=accent)
         text(scene, "install", "pip install codimate", style)
 
 
@@ -138,5 +140,5 @@ def places() -> sound.Places:
         bars=tuple(item.value for item in bars),
         marker=(left + prefix_width, left + prefix_width + word_width),
         code=CODE,
-        animated=TITLES["animated"].content,
+        animated=titles()["animated"].content,
     )

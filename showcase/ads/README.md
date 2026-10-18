@@ -1,12 +1,13 @@
 # Launch film
 
-A 30-second ad for Codimate 0.4, Apple-style: dark type on white, one blue,
+A 30-second ad for Codimate 0.4, Apple-style: on white or black, one blue,
 words that spring into place, and a sound track synthesised to match every move.
 
 ```bash
-python about-codimate/ads/main.py            # results/codimate-0.4-launch.mp4
-python about-codimate/ads/main.py --audio    # only the sound track
-python about-codimate/ads/main.py --stills   # a few frames, to check layout
+python showcase/ads/main.py            # results/codimate-0.4-launch.mp4
+python showcase/ads/main.py --audio    # only the sound track
+python showcase/ads/main.py --stills   # a few frames, to check layout
+python showcase/ads/main.py --dark     # any of these, on black
 ```
 
 ## What it teaches
@@ -25,7 +26,7 @@ python about-codimate/ads/main.py --stills   # a few frames, to check layout
 main.py      connects the parts; render, sound, stills
 story.py     what happens, beat by beat, and how long each lasts
 scenes.py    what each moment looks like, and where things sit
-look.py      type, colour, and every headline
+look.py      type, the light and dark palettes, every headline
 sound/       the sound track, which never imports Codimate
     cues.py         the cue sheet: which sound, when, how loud, where
     follow.py       the picture's motion re-derived: spring, stagger, the sort

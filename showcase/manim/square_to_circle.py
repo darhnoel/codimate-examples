@@ -1,6 +1,6 @@
 """Manim's `SquareToCircle`, written in Codimate.
 
-    python about-codimate/manim/square_to_circle.py
+    python showcase/manim/square_to_circle.py
 
 Manim names three animations and plays them:
 
