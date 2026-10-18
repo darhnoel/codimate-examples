@@ -182,6 +182,16 @@ glow behind it is three faint plates whose opacity the Engine tweens; the typed 
 are named by position, so a new one fades in and a deleted one fades out. It also draws
 every icon from lines, since there is no emoji font.
 
+## Shaded 3D on a 2D engine
+
+**[`about-codimate/blobs/`](about-codimate/blobs/)** — forty shaded balls, the way a microscope
+shows cell nuclei, with the camera walking round them. `science.Camera`, `Light` and `World`
+do the 3D; the Engine only ever sees flat shapes painted far to near.
+
+**[`physics/liftoff/`](physics/liftoff/)** — a car drives down a lit night road, lifts off on four
+thrusters, hovers and lands. Codimate cannot compute pixels, so its smoke is a 3D volume painted
+frame by frame with numpy, and the road and lamps are painted under it.
+
 ## If you are coming from Manim
 
 **[`about-codimate/manim/`](about-codimate/manim/)** — five of Manim's tutorial scenes, translated.
