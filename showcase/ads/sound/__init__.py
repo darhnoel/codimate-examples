@@ -8,22 +8,26 @@ timeline as plain ``(start, length, name)`` beats and the layout as ``Places``.
 One track laid on that timeline, rather than a clip per ``emit``, because a cue
 often belongs *after* its beat starts (a word lands, a ball settles).
 
-The parts, from the top down:
+The parts:
 
 - ``cues``: the cue sheet. Which sound, at which beat, how loud, where.
 - ``follow``: the picture's motion re-derived: the spring, the stagger, the sort.
-- ``instruments``: each sound source: keys, wood, glass, paper, a felt tip, a ball.
-- ``room``: the mix bus and the one small room every cue is sent to.
-- ``master``: the WAV file, then loudness and peaks for the web.
-- ``dsp``: noise, filters, envelopes, panning, pitch names.
+- ``ball``: the ball's rumble, which follows its spring the whole way across.
+
+The instruments, the room and the mastering are shared with the other films, in
+``studio/sound`` at the top of this repository.
 """
 
 from __future__ import annotations
 
+import sys
 from pathlib import Path
 
-from .cues import Places, score
-from .master import master, write_wav
+sys.path.insert(0, str(Path(__file__).resolve().parents[3]))  # for studio/
+
+from studio.sound.master import master, write_wav  # noqa: E402
+
+from .cues import Places, score  # noqa: E402
 
 __all__ = ["Places", "score", "soundtrack"]
 

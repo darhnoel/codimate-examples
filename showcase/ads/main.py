@@ -12,13 +12,13 @@ moment looks like, ``look`` the type and colour, and ``sound`` everything heard.
 from __future__ import annotations
 
 import argparse
-import subprocess
 from pathlib import Path
 
 import codimate as cm
 
 import look
 import sound
+from studio.film import mux
 from scenes import places, view
 from story import Film, tell, timing
 
@@ -53,16 +53,7 @@ def render(ad: cm.Explanation, name: str) -> None:
     RESULTS.mkdir(exist_ok=True)
     out = RESULTS / f"{name}.mp4"
     ad.render(str(out), fps=FPS, scale=1.0)
-    track = soundtrack(ad)
-    with_sound = out.with_name(f"{out.stem}.sound{out.suffix}")
-    subprocess.run(
-        ["ffmpeg", "-v", "error", "-y", "-i", str(out), "-i", str(track)]
-        + ["-map", "0:v", "-map", "1:a", "-frames:v", str(round(ad.duration * FPS))]
-        + ["-t", f"{ad.duration:.3f}", "-c:v", "copy", "-c:a", "aac", "-b:a", "256k"]
-        + ["-movflags", "+faststart", str(with_sound)],
-        check=True,
-    )
-    with_sound.replace(out)
+    mux(out, soundtrack(ad), ad.duration, FPS)
     print(f"wrote {out}")
 
 

@@ -13,7 +13,7 @@ from pathlib import Path
 
 import codimate as cm
 
-FONTS = Path(__file__).resolve().parent / "fonts"
+FONTS = Path(__file__).resolve().parents[2] / "studio" / "fonts"
 INTER = str(FONTS / "Inter-Regular.otf")
 INTER_MEDIUM = str(FONTS / "Inter-Medium.otf")
 INTER_BOLD = str(FONTS / "Inter-Bold.otf")

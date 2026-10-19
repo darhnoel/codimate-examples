@@ -11,10 +11,13 @@ from dataclasses import dataclass
 
 import numpy as np
 
-from . import instruments as play
-from .dsp import note, pan
+from studio.sound import instruments as play
+from studio.sound.dsp import note, pan
+from studio.sound.room import Track
+from studio.sound.timeline import Beats
+
+from .ball import roll
 from .follow import bubble_swaps, letter_starts
-from .room import Track
 
 
 @dataclass(frozen=True)
@@ -33,21 +36,6 @@ class Places:
     def pan(self, x):
         """A pan position for an x on screen, kept off the hard edges."""
         return (x - self.width / 2) / (self.width / 2) * 0.7
-
-
-class Beats:
-    """The film's timeline, asked by beat name."""
-
-    def __init__(self, timeline):
-        self._beats = list(timeline)
-
-    def first(self, name) -> tuple:
-        """(start, length) of the first beat called ``name``."""
-        return next((start, length) for start, length, n in self._beats if n == name)
-
-    def starts(self, name) -> list:
-        """When every beat called ``name`` starts."""
-        return [start for start, _, n in self._beats if n == name]
 
 
 def score(timeline, duration: float, places: Places, seed: int = 4) -> np.ndarray:
@@ -98,7 +86,7 @@ def _write_python(track, beats, places, rng):
         )
 
     start, length = beats.first("roll")
-    track.add(start, play.roll(length, places.ball, places.pan, rng), db=-9, wet=0.1)
+    track.add(start, roll(length, places.ball, places.pan, rng), db=-9, wet=0.1)
 
 
 def _sort(track, beats, places, rng):

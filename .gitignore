@@ -23,3 +23,7 @@ __pycache__/
 /showcase/pypi_nightly/
 /attention/
 /eyetwist/
+
+# The Rust lessons are a private repository of their own, nested here so they
+# can use studio/ and results/. Never published with these examples.
+/rust/

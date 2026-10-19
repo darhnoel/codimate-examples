@@ -34,7 +34,8 @@ def write_wav(path: Path, stereo: np.ndarray, rng=None) -> None:
 
 def master(raw: Path, out: Path, ffmpeg: str = "ffmpeg") -> dict:
     """Light compression, then loudness normalised in two passes, so the level
-    is measured rather than guessed, then a limiter. Returns the measurement."""
+    is measured rather than guessed, then a true-peak limiter. Returns the
+    measurement."""
     measured = _measure(raw, ffmpeg)
     normalise = (
         f"loudnorm={LOUDNESS}:linear=true"
@@ -43,13 +44,42 @@ def master(raw: Path, out: Path, ffmpeg: str = "ffmpeg") -> dict:
         f":measured_thresh={measured['input_thresh']}"
         f":offset={measured['target_offset']}"
     )
-    chain = f"{GLUE},{normalise},alimiter=limit=0.89:level=false,aresample={SR}"
+    # Limited at four times the rate, so it sees the peaks between samples
+    # (true peaks) that a sharp transient makes, not only the samples.
+    limit = f"aresample={4 * SR},alimiter=limit=0.89:level=false,aresample={SR}"
+    chain = f"{GLUE},{normalise},{limit}"
     subprocess.run(
         [ffmpeg, "-v", "error", "-y", "-i", str(raw), "-af", chain]
         + ["-c:a", "pcm_s16le", str(out)],
         check=True,
     )
+    _trim_true_peak(out, ffmpeg)
     return measured
+
+
+def _trim_true_peak(path: Path, ffmpeg: str, ceiling: float = -2.0) -> None:
+    """Turn the whole track down if its true peak still tops ``ceiling`` dB.
+    Resampling after the limiter can overshoot a sharp transient, and AAC
+    encoding adds up to about 1.5 dB more, so -2 leaves the encoded film under
+    -1 dB, which is what YouTube and Facebook ask for."""
+    report = subprocess.run(
+        [ffmpeg, "-hide_banner", "-nostats", "-i", str(path)]
+        + ["-af", "ebur128=peak=true", "-f", "null", "-"],
+        capture_output=True,
+        text=True,
+        check=True,
+    ).stderr
+    peak = float(report.rsplit("Peak:", 1)[1].split()[0])
+    if peak <= ceiling:
+        return
+    trimmed = path.with_name(f"{path.stem}.trim{path.suffix}")
+    gain = ceiling - peak - 0.05
+    subprocess.run(
+        [ffmpeg, "-v", "error", "-y", "-i", str(path), "-af", f"volume={gain:.2f}dB"]
+        + ["-c:a", "pcm_s16le", str(trimmed)],
+        check=True,
+    )
+    trimmed.replace(path)
 
 
 def _measure(raw: Path, ffmpeg: str) -> dict:

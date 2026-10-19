@@ -30,11 +30,11 @@ look.py      type, the light and dark palettes, every headline
 sound/       the sound track, which never imports Codimate
     cues.py         the cue sheet: which sound, when, how loud, where
     follow.py       the picture's motion re-derived: spring, stagger, the sort
-    instruments.py  keys, wood, glass, paper, a felt tip, a rolling ball
-    room.py         the mix bus and one small reverb
-    master.py       the WAV, then -14 LUFS and -1 dB true peak via ffmpeg
-    dsp.py          noise, filters, envelopes, panning, pitch names
-fonts/       Inter (SIL Open Font License, see fonts/LICENSE.txt)
+    ball.py         the ball's rumble, following its spring
 ```
+
+The instruments, the room, the mastering and the Inter fonts are shared with
+the other films, in [`studio/`](../../studio/).
+
 
 Needs a Codimate with `cm.text` (newer than 0.4.0) and `ffmpeg`.

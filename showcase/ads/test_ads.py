@@ -8,8 +8,8 @@ import numpy as np
 import sound
 from main import film
 from scenes import places
-from sound.dsp import SR
 from sound.follow import bubble_swaps, letter_starts, spring
+from studio.sound.dsp import SR
 
 
 def _level(track, a, b):

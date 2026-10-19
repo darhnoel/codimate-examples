@@ -1,5 +1,5 @@
 """Each sound source, built from noise and resonance to imitate a real thing:
-a laptop key, a wooden bar, struck glass, paper, a felt tip, a rolling ball.
+a laptop key, a wooden bar, struck glass, paper, a felt tip.
 
 Every function takes a seeded ``rng`` and returns a mono clip peaking at 1,
 except where a sound moves across the stereo field and returns stereo.
@@ -24,7 +24,6 @@ from .dsp import (
     sweep,
     times,
 )
-from .follow import spring
 
 # ------------------------------------------------------------------ struck
 
@@ -171,31 +170,3 @@ def felt_tip(seconds, rng):
     body = (scratch + squeak) * attack * speed**0.6
     tip = highpass(rng.standard_normal(n), 3000) * decay(seconds, 0.0015)
     return norm(body + 0.5 * tip)
-
-
-# ------------------------------------------------------------------ the ball
-
-
-def roll(seconds, path, to_pan, rng, bounciness=0.35):
-    """A ball rolling along ``path`` (start x, end x) on its spring: a low
-    rumble that tracks its speed, the turn of the ball in it, a soft tap at
-    each turn of the overshoot, and a pan that follows it. ``to_pan`` maps an
-    x on screen to a pan position. Stereo."""
-    n = samples(seconds)
-    x0, x1 = path
-    x = x0 + (x1 - x0) * spring(np.linspace(0, 1, n), bounciness)
-    v = np.gradient(x) * SR  # px per second
-    speed = np.abs(v) / np.abs(v).max()
-
-    rumble = highpass(lowpass(np.cumsum(rng.standard_normal(n)), 260), 35)
-    turn = np.cumsum(np.abs(v)) / SR / (TAU * 34)  # the ball's radius is 34 px
-    rumble *= 1 + 0.35 * np.sin(TAU * turn)
-    texture = band(rng.standard_normal(n), 700, 2200) * grain(n, 40, 0.6, rng) * 0.08
-    body = (norm(rumble) + texture) * speed**0.8
-
-    taps = np.zeros(n)
-    turns = np.where(np.diff(np.sign(v)) != 0)[0][:2]
-    for k, i in enumerate(turns):
-        hit = knock(rng.uniform(150, 180), rng)[: n - i] * (0.5, 0.3)[k]
-        taps[i : i + len(hit)] += hit
-    return pan(norm(body) + taps, to_pan(x))
