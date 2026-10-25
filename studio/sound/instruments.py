@@ -44,6 +44,20 @@ def key(rng, kind="letter"):
     return norm(press) * rng.uniform(0.75, 1.0)
 
 
+def soft_key(rng):
+    """A quiet laptop key: a short plastic tick over a soft low thock, with a
+    tiny release. No pitched pop, so fast typing stays unobtrusive."""
+    seconds = 0.075
+    noise = rng.standard_normal(samples(seconds))
+    tick = band(noise, 3200, 9000) * decay(seconds, 0.0008)
+    thock = band(noise, 180, 900) * decay(seconds, 0.011)
+    release = np.zeros_like(tick)
+    delay = samples(0.0035)
+    release[delay:] = tick[:-delay] * 0.22
+    press = tick + 0.5 * thock + release
+    return norm(press) * rng.uniform(0.6, 0.9)
+
+
 def knock(freq, rng):
     """A tuned wooden bar, struck softly."""
     seconds = 0.45
