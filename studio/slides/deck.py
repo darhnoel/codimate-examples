@@ -161,7 +161,8 @@ class Deck:
         key = tuple(tuple(w) for w in words)
         if key not in self._cache:
             self._cache[key] = _caption_lines(
-                words, lambda text: cm.measure(text, CAPTION.size, face(CAPTION.font))[0]
+                words,
+                lambda text: cm.measure(text, CAPTION.size, face(CAPTION.font))[0],
             )
         return self._cache[key]
 
