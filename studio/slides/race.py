@@ -20,7 +20,7 @@ from dataclasses import dataclass
 import codimate as cm
 
 from .code import MONO, PANEL, SYNTAX, spans
-from .look import BOLD, CENTRE, HEAD, MEDIUM, SMALL, Setting, Type, write
+from .look import BOLD, CENTRE, HEAD, MEDIUM, SMALL, Setting, Type, theme_name, write
 
 VALUE = Type(44, BOLD)
 CLOCK = Type(40, MEDIUM, "muted")
@@ -36,7 +36,7 @@ _TOKEN = re.compile(r'"[^"]*"|\w+|\S')
 
 
 def _dark(theme) -> str:
-    return "dark" if theme.page == "#000000" else "light"
+    return theme_name(theme)
 
 
 def _pairs(text: str) -> dict:

@@ -9,7 +9,7 @@ For slides a talk builds itself, with parts that move (``Part(..., moves=)``).
 
 from __future__ import annotations
 
-from .look import BOLD, CENTRE, HEAD, MEDIUM, Setting, Type, write
+from .look import BOLD, CENTRE, HEAD, MEDIUM, Setting, Type, theme_name, write
 
 GOLD = {"light": ("#f5b800", "#c99400"), "dark": ("#ffc83d", "#d99e00")}  # face, rim
 AMOUNT = Type(52, BOLD)  # a sum of money, as a label
@@ -18,7 +18,7 @@ LABEL = Type(44, MEDIUM, "muted")  # what the sum is
 
 def coin(scene, key, at, theme, size=(200, 26)):
     """A coin seen side on, as in a stack: ``size`` is its width and thickness."""
-    face, rim = GOLD["dark" if theme.page == "#000000" else "light"]
+    face, rim = GOLD[theme_name(theme)]
     w, h = size
     shape = scene.rect(key, w=w, h=h, at=at)
     shape.fill(face, edge=rim, edge_w=3).round(h / 2).on(layer=1)

@@ -22,6 +22,18 @@ only content. ``*word*`` puts a word in the accent colour.
 - ``look``: the themes (light, dark), the type scale, and measured layout.
 - ``deck``: slides into a film: cuts between slides, each part settling into
   place as its line is spoken, voice and sound mixed and mastered.
+
+The template's locks, for every explainer built on it:
+
+- the theme and the type scale (``look``): the palette, the faces and the sizes;
+- the motion (``deck``): a slide arrives on a cut, each part cuts in a few pixels
+  low and settles into place, and nothing fades;
+- the timing (``deck``): every pause is a whole number of frames, and each part
+  arrives as its narrated line starts.
+
+What stays free: any part's drawing, any new kind, and a colour a kind names on
+purpose (``money`` and ``code`` do). The kinds are starters, not the only
+layouts. ``tests/test_slides.py`` checks the locks.
 """
 
 from .code import Code

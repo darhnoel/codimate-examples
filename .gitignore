@@ -30,3 +30,10 @@ __pycache__/
 
 # The local voice model (Kokoro) and its own environment, about 1 GB.
 .venv-voice/
+
+# Private work. These folders live in a private repository, never in this one.
+/promo/
+/showcase/mascot_animation/
+/showcase/written-by/
+/showcase/motion-reel/
+/showcase/showreel/

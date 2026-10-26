@@ -11,7 +11,7 @@ from dataclasses import dataclass
 
 import codimate as cm
 
-from .look import CENTRE, HEAD, SMALL, Setting, height, write
+from .look import CENTRE, HEAD, SMALL, Setting, height, theme_name, write
 
 MONO = "Menlo"
 KEYWORDS = {
@@ -120,7 +120,7 @@ class Code:
                 Setting(HEAD, theme),
                 (CENTRE[0], top - 90 + dy),
             )
-            name = "dark" if theme.page == "#000000" else "light"
+            name = theme_name(theme)
             back = scene.rect(
                 key + ("panel",),
                 w=right - left,

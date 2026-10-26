@@ -64,6 +64,11 @@ THEMES = {
 }
 
 
+def theme_name(theme: Theme) -> str:
+    """Which of the two themes ``theme`` is: "dark" or "light"."""
+    return "dark" if theme.page == THEMES["dark"].page else "light"
+
+
 @dataclass(frozen=True)
 class Type:
     size: float
