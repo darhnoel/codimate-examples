@@ -20,6 +20,7 @@ from __future__ import annotations
 import hashlib
 import json
 import re
+import struct
 import subprocess
 import tempfile
 import wave
@@ -74,13 +75,25 @@ class Voice:
         """Every line as a Clip, speaking only the ones not already cached."""
         lines = [line for line in dict.fromkeys(lines) if line.strip()]
         self.cache.mkdir(parents=True, exist_ok=True)
-        missing = [line for line in lines if not self._timings(line).exists()]
+        missing = [line for line in lines if not self._cached(line)]
         if missing:
             self._run(missing)
         return {line: self._clip(line) for line in lines}
 
     def _timings(self, text: str) -> Path:
         return self._path(text).with_suffix(".json")
+
+    def _cached(self, text: str) -> bool:
+        if not _valid_wav(self._path(text)):
+            return False
+        try:
+            words = json.loads(self._timings(text).read_text())
+            return isinstance(words, list) and all(
+                isinstance(word, (list, tuple)) and len(word) == 3
+                for word in words
+            )
+        except (OSError, ValueError):
+            return False
 
     def _clip(self, text: str) -> Clip:
         path = self._path(text)
@@ -93,7 +106,7 @@ class Voice:
                 "narration needs the voice environment: python -m venv .venv-voice && "
                 ".venv-voice/bin/pip install kokoro soundfile"
             )
-        with tempfile.TemporaryDirectory() as folder:
+        with tempfile.TemporaryDirectory(dir=self.cache) as folder:
             raw = {str(Path(folder) / f"{k}.wav"): text for k, text in enumerate(lines)}
             jobs = Path(folder) / "jobs.json"
             jobs.write_text(
@@ -109,7 +122,7 @@ class Voice:
                 [str(PYTHON), str(WORKER), str(jobs)], check=True, capture_output=True
             )
             for source, text in raw.items():  # 24 kHz in, 48 kHz out, as the films use
-                Path(source).with_suffix(".json").replace(self._timings(text))
+                converted = Path(source).with_suffix(".converted.wav")
                 subprocess.run(
                     [
                         "ffmpeg",
@@ -123,11 +136,33 @@ class Voice:
                         "-ac",
                         "1",
                     ]
-                    + [str(self._path(text))],
+                    + [str(converted)],
                     check=True,
                 )
+                if not _valid_wav(converted):
+                    raise RuntimeError(f"invalid voice audio for {text!r}")
+                # Publish the timing marker last, after the WAV is complete.
+                self._timings(text).unlink(missing_ok=True)
+                converted.replace(self._path(text))
+                Path(source).with_suffix(".json").replace(self._timings(text))
 
 
 def _seconds(path: Path) -> float:
     with wave.open(str(path)) as clip:
         return clip.getnframes() / clip.getframerate()
+
+
+def _valid_wav(path: Path) -> bool:
+    """Whether a cached clip is readable 48 kHz mono 16-bit audio."""
+    try:
+        with wave.open(str(path)) as clip:
+            return (
+                clip.getnchannels() == 1
+                and clip.getsampwidth() == 2
+                and clip.getframerate() == RATE
+                and clip.getnframes() > 0
+                and len(clip.readframes(clip.getnframes()))
+                == clip.getnframes() * 2
+            )
+    except (OSError, EOFError, wave.Error, struct.error):
+        return False
