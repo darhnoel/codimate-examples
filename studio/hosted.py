@@ -36,6 +36,10 @@ class Hosted:
         self.cache, self.service = Path(cache), service
         self.name, self.speed = name, speed
 
+    def __repr__(self) -> str:
+        # Stable, so a film's fingerprint (kit.film.pieces) names the voice.
+        return f"Hosted({self.service}:{self.name}@{self.speed})"
+
     def _path(self, text: str) -> Path:
         key = f"{self.service}|{self.name}|{self.speed}|{text}"
         return self.cache / f"{hashlib.sha1(key.encode()).hexdigest()[:16]}.wav"
